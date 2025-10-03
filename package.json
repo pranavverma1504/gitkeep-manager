@@ -1,0 +1,55 @@
+{
+  "name": "gitkeep-manager",
+  "publisher": "pranavgit",
+  "displayName": "Gitkeep Manager",
+  "description": "Add and manage .gitkeep files in empty folders",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:gitkeep.add",
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitkeep.add",
+        "title": "Gitkeep: Add .gitkeep to empty folders"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Gitkeep Extension Settings",
+      "properties": {
+        "gitkeep.fileName": {
+          "type": "string",
+          "default": ".gitkeep",
+          "description": "File name used for empty folders"
+        },
+        "gitkeep.ignorePatterns": {
+          "type": "array",
+          "default": ["node_modules", ".git", ".vscode", "dist", "build"],
+          "description": "Folders to ignore"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.104.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "eslint": "^9.36.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
